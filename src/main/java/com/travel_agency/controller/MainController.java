@@ -3,8 +3,13 @@ package com.travel_agency.controller;
 import com.travel_agency.domain.Message;
 import com.travel_agency.domain.User;
 import com.travel_agency.repository.MessageRepository;
+import com.travel_agency.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import org.springframework.data.domain.Pageable;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -28,6 +34,9 @@ public class MainController {
     @Autowired
     private MessageRepository messageRepository;
 
+    @Autowired
+    private TourService tourService;
+
     @Value("${upload.path}")
     private String uploadPath;
 
@@ -37,16 +46,13 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
-        Iterable<Message> messages = messageRepository.findAll();
+    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model,
+                       @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        Page<Message> page = tourService.messageList(pageable, filter);
 
-        if (filter != null && !filter.isEmpty()) {
-            messages = messageRepository.findByTag(filter);
-        } else {
-            messages = messageRepository.findAll();
-        }
-
-        model.addAttribute("messages", messages);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/main");
         model.addAttribute("filter", filter);
 
         return "main";
@@ -59,6 +65,7 @@ public class MainController {
             BindingResult bindingResult,
             Model model,
             @RequestParam("file") MultipartFile file
+
     ) throws IOException {
         message.setAuthor(user);
 
@@ -98,18 +105,21 @@ public class MainController {
             message.setFilename(resultFilename);
         }
     }
-    @GetMapping("/user-messages/{user}")
+
+    @GetMapping("/user-messages/{author}")
     public String userMessges(
             @AuthenticationPrincipal User currentUser,
-            @PathVariable User user,
+            @PathVariable User author,
             Model model,
-            @RequestParam(required = false) Message message
+            @RequestParam(required = false) Message message,
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
-        Set<Message> messages = user.getMessages();
+        Page<Message> page = tourService.tourListForUser(pageable, currentUser, author);
 
-        model.addAttribute("messages", messages);
+        model.addAttribute("page", page);
         model.addAttribute("message", message);
-        model.addAttribute("isCurrentUser", currentUser.equals(user));
+        model.addAttribute("isCurrentUser", currentUser.equals(author));
+        model.addAttribute("url", "/user-messages/" + author.getId());
 
         return "userMessages";
     }
