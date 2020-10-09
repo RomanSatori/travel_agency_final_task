@@ -1,7 +1,8 @@
 <#import "parts/common.ftl" as c>
+<#import "/spring.ftl" as spring>
 
 <@c.page>
-    User editor
+    <@spring.message "userEdit.userEditor"/>
 
     <form action="/user" method="post">
         <input type="text" name="username" value="${user.username}">

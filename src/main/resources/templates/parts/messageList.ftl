@@ -1,5 +1,5 @@
 <#include "security.ftl">
-
+<#import "/spring.ftl" as spring>
 <div class="card-columns">
     <#list messages as message>
         <div class="card my-3">
@@ -12,14 +12,12 @@
             </div>
             <div class="card-footer text-muted">
                 <a href="/user-messages/${message.author.id}">${message.authorName}</a>
-                <#if message.author.id == currentUserId>
                     <a class="btn btn-primary" href="/user-messages/${message.author.id}?message=${message.id}">
-                        Edit
+                        <@spring.message "messageList.Edit"/>
                     </a>
-                </#if>
             </div>
         </div>
     <#else>
-        No message
+        <@spring.message "messageList.noMessage"/>
     </#list>
 </div>
