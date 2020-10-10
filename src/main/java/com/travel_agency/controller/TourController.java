@@ -48,7 +48,7 @@ public class TourController {
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model,
                        @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
-        Page<Message> page = tourService.messageList(pageable, filter);
+        Page<Message> page = tourService.tourList(pageable, filter);
 
         model.addAttribute("page", page);
         model.addAttribute("url", "/main");

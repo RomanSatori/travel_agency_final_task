@@ -13,7 +13,7 @@ public class TourService {
     @Autowired
     TourRepository tourRepository;
 
-    public Page<Message> messageList(Pageable pageable, String filter) {
+    public Page<Message> tourList(Pageable pageable, String filter) {
         if (filter != null && !filter.isEmpty()) {
             return tourRepository.findByTag(filter, pageable);
         } else {
