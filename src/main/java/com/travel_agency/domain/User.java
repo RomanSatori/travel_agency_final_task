@@ -31,7 +31,7 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Tour> tours;
+    private Set<Message> messages;
 
     @Override
     public boolean equals(Object o) {
@@ -124,11 +124,11 @@ public class User implements UserDetails {
     }
 
 
-    public Set<Tour> getMessages() {
-        return tours;
+    public Set<Message> getMessages() {
+        return messages;
     }
 
-    public void setMessages(Set<Tour> tours) {
-        this.tours = tours;
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 }

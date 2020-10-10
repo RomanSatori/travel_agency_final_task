@@ -6,15 +6,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Tour {
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank(message = "Please fill the message")
-    @Length(max = 2048, message = "Tour too long (more than 2kB)")
+    @Length(max = 2048, message = "Message too long (more than 2kB)")
     private String text;
-    @Length(max = 255, message = "Tour too long (more than 255)")
+    @Length(max = 255, message = "Message too long (more than 255)")
     private String tag;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -23,10 +23,10 @@ public class Tour {
 
     private String filename;
 
-    public Tour() {
+    public Message() {
     }
 
-    public Tour(String text, String tag, User user) {
+    public Message(String text, String tag, User user) {
         this.author = user;
         this.text = text;
         this.tag = tag;

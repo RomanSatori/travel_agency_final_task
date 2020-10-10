@@ -1,6 +1,6 @@
 package com.travel_agency.controller;
 
-import com.travel_agency.domain.Tour;
+import com.travel_agency.domain.Message;
 import com.travel_agency.domain.User;
 import com.travel_agency.repository.TourRepository;
 import com.travel_agency.service.TourService;
@@ -48,7 +48,7 @@ public class TourController {
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model,
                        @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
-        Page<Tour> page = tourService.tourList(pageable, filter);
+        Page<Message> page = tourService.tourList(pageable, filter);
 
         model.addAttribute("page", page);
         model.addAttribute("url", "/main");
@@ -60,35 +60,35 @@ public class TourController {
     @PostMapping("/main")
     public String add(
             @AuthenticationPrincipal User user,
-            @Valid Tour tour,
+            @Valid Message message,
             BindingResult bindingResult,
             Model model,
             @RequestParam("file") MultipartFile file
 
     ) throws IOException {
-        tour.setAuthor(user);
+        message.setAuthor(user);
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
 
             model.mergeAttributes(errorsMap);
-            model.addAttribute("message", tour);
+            model.addAttribute("message", message);
         } else {
-            saveFile(tour, file);
+            saveFile(message, file);
 
             model.addAttribute("message", null);
 
-            tourRepository.save(tour);
+            tourRepository.save(message);
         }
 
-        Iterable<Tour> messages = tourRepository.findAll();
+        Iterable<Message> messages = tourRepository.findAll();
 
         model.addAttribute("messages", messages);
 
         return "main";
     }
 
-    private void saveFile(@Valid Tour tour, @RequestParam("file") MultipartFile file) throws IOException {
+    private void saveFile(@Valid Message message, @RequestParam("file") MultipartFile file) throws IOException {
         if (file != null && !file.getOriginalFilename().isEmpty()) {
             File uploadDir = new File(uploadPath);
 
@@ -101,7 +101,7 @@ public class TourController {
 
             file.transferTo(new File(uploadPath + "/" + resultFilename));
 
-            tour.setFilename(resultFilename);
+            message.setFilename(resultFilename);
         }
     }
 
@@ -110,13 +110,13 @@ public class TourController {
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
             Model model,
-            @RequestParam(required = false) Tour tour,
+            @RequestParam(required = false) Message message,
             @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
-        Page<Tour> page = tourService.tourListForUser(pageable, currentUser, author);
+        Page<Message> page = tourService.tourListForUser(pageable, currentUser, author);
 
         model.addAttribute("page", page);
-        model.addAttribute("message", tour);
+        model.addAttribute("message", message);
         model.addAttribute("isCurrentUser", currentUser.equals(author));
         model.addAttribute("url", "/user-tours/" + author.getId());
 
@@ -127,23 +127,23 @@ public class TourController {
     public String updateTour(
             @AuthenticationPrincipal User currentUser,
             @PathVariable Long user,
-            @RequestParam("tour") Tour tour,
+            @RequestParam("id") Message message,
             @RequestParam("text") String text,
             @RequestParam("tag") String tag,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
-        if (tour.getAuthor().equals(currentUser)) {
+        if (message.getAuthor().equals(currentUser)) {
             if (!StringUtils.isEmpty(text)) {
-                tour.setText(text);
+                message.setText(text);
             }
 
             if (!StringUtils.isEmpty(tag)) {
-                tour.setTag(tag);
+                message.setTag(tag);
             }
 
-            saveFile(tour, file);
+            saveFile(message, file);
 
-            tourRepository.save(tour);
+            tourRepository.save(message);
         }
 
         return "redirect:/user-tours/" + user;
