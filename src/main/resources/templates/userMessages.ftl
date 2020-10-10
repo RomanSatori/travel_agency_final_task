@@ -3,7 +3,7 @@
 <#include "parts/security.ftl">
 <@c.page>
     <#if isAdmin>
-        <#include "parts/messageEdit.ftl"/>
+        <#include "parts/tourEdit.ftl"/>
     </#if>
-    <#include "parts/messageList.ftl"/>
+    <#include "parts/tourList.ftl"/>
 </@c.page>
