@@ -14,35 +14,35 @@
 - заблокувати/розблокувати користувача.
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20224027.png )
-Форма логіну
+✅Форма логіну
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20224456.png )
-Форма реєстрації + локалізація
+✅Форма реєстрації + локалізація
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20224751.png )
-Сторінка замовлення турів + пагінація, вхід під адміном
+✅Сторінка замовлення турів + пагінація, вхід під адміном
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20225211.png )
-Пагінація, друга сторінка
+✅Пагінація, друга сторінка
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20225401.png )
-Редагування ролей користувачів
+✅Редагування ролей користувачів
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20225610.png )
-Зміна паролю та електронної пошти
+✅Зміна паролю та електронної пошти
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20225912.png )
-Добавлення нового туру
+✅Добавлення нового туру
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20230044.png )
-Результат добавлення
+✅Результат добавлення
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20230252.png )
-Робота фільтру
+✅Робота фільтру
 
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20230409.png )
-Валідація при вході
+✅Валідація при вході
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20230549.png )
-Форма замовлення туру, вигляд простого користувача
+✅Форма замовлення туру, вигляд простого користувача
