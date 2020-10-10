@@ -8,11 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface MessageRepository extends CrudRepository<Message, Long> {
+public interface TourRepository extends CrudRepository<Message, Long> {
 
     Page<Message> findAll(Pageable pageable);
 
     Page<Message> findByTag(String tag, Pageable pageable);
-    @Query("from Message message where message.author = :author")
-    Page<Message> findByUser(Pageable pageable,@Param("author") User author);
+
+    @Query("from Message tour where tour.author = :author")
+    Page<Message> findByUser(Pageable pageable, @Param("author") User author);
 }

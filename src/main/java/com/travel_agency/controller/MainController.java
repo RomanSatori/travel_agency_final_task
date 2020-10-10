@@ -2,7 +2,7 @@ package com.travel_agency.controller;
 
 import com.travel_agency.domain.Message;
 import com.travel_agency.domain.User;
-import com.travel_agency.repository.MessageRepository;
+import com.travel_agency.repository.TourRepository;
 import com.travel_agency.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,13 +26,12 @@ import org.springframework.data.domain.Pageable;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 @Controller
 public class MainController {
     @Autowired
-    private MessageRepository messageRepository;
+    private TourRepository tourRepository;
 
     @Autowired
     private TourService tourService;
@@ -49,7 +48,7 @@ public class MainController {
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model,
                        @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
-        Page<Message> page = tourService.messageList(pageable, filter);
+        Page<Message> page = tourService.tourList(pageable, filter);
 
         model.addAttribute("page", page);
         model.addAttribute("url", "/main");
@@ -79,10 +78,10 @@ public class MainController {
 
             model.addAttribute("message", null);
 
-            messageRepository.save(message);
+            tourRepository.save(message);
         }
 
-        Iterable<Message> messages = messageRepository.findAll();
+        Iterable<Message> messages = tourRepository.findAll();
 
         model.addAttribute("messages", messages);
 
@@ -144,7 +143,7 @@ public class MainController {
 
             saveFile(message, file);
 
-            messageRepository.save(message);
+            tourRepository.save(message);
         }
 
         return "redirect:/user-messages/" + user;
