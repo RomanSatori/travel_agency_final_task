@@ -2,7 +2,7 @@ package com.travel_agency.controller;
 
 import com.travel_agency.domain.Message;
 import com.travel_agency.domain.User;
-import com.travel_agency.repository.MessageRepository;
+import com.travel_agency.repository.TourRepository;
 import com.travel_agency.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,13 +26,12 @@ import org.springframework.data.domain.Pageable;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 @Controller
-public class MainController {
+public class TourController {
     @Autowired
-    private MessageRepository messageRepository;
+    private TourRepository tourRepository;
 
     @Autowired
     private TourService tourService;
@@ -79,10 +78,10 @@ public class MainController {
 
             model.addAttribute("message", null);
 
-            messageRepository.save(message);
+            tourRepository.save(message);
         }
 
-        Iterable<Message> messages = messageRepository.findAll();
+        Iterable<Message> messages = tourRepository.findAll();
 
         model.addAttribute("messages", messages);
 
@@ -106,8 +105,8 @@ public class MainController {
         }
     }
 
-    @GetMapping("/user-messages/{author}")
-    public String userMessges(
+    @GetMapping("/user-tours/{author}")
+    public String userTours(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
             Model model,
@@ -119,13 +118,13 @@ public class MainController {
         model.addAttribute("page", page);
         model.addAttribute("message", message);
         model.addAttribute("isCurrentUser", currentUser.equals(author));
-        model.addAttribute("url", "/user-messages/" + author.getId());
+        model.addAttribute("url", "/user-tours/" + author.getId());
 
         return "userMessages";
     }
 
-    @PostMapping("/user-messages/{user}")
-    public String updateMessage(
+    @PostMapping("/user-tours/{user}")
+    public String updateTour(
             @AuthenticationPrincipal User currentUser,
             @PathVariable Long user,
             @RequestParam("id") Message message,
@@ -144,9 +143,9 @@ public class MainController {
 
             saveFile(message, file);
 
-            messageRepository.save(message);
+            tourRepository.save(message);
         }
 
-        return "redirect:/user-messages/" + user;
+        return "redirect:/user-tours/" + user;
     }
 }
