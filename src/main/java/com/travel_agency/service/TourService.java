@@ -1,6 +1,6 @@
 package com.travel_agency.service;
 
-import com.travel_agency.domain.Message;
+import com.travel_agency.domain.Tour;
 import com.travel_agency.domain.User;
 import com.travel_agency.repository.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class TourService {
     @Autowired
     TourRepository tourRepository;
 
-    public Page<Message> tourList(Pageable pageable, String filter) {
+    public Page<Tour> tourList(Pageable pageable, String filter) {
         if (filter != null && !filter.isEmpty()) {
             return tourRepository.findByTag(filter, pageable);
         } else {
@@ -21,7 +21,7 @@ public class TourService {
         }
     }
 
-    public Page<Message> tourListForUser(Pageable pageable, User currentUser, User author) {
+    public Page<Tour> tourListForUser(Pageable pageable, User currentUser, User author) {
         return tourRepository.findByUser(pageable, author);
     }
 }
