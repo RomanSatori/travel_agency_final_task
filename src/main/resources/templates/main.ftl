@@ -11,8 +11,8 @@
         </div>
     </div>
 
-    <#include "parts/tourEdit.ftl" />
+    <#include "parts/messageEdit.ftl" />
 
-    <#include "parts/tourList.ftl" />
+    <#include "parts/messageList.ftl" />
 
 </@c.page>
