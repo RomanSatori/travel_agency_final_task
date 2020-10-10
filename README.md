@@ -22,8 +22,7 @@
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20224751.png )
 Сторінка замовлення турів + пагінація, вхід під адміном
 
-
-![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20225211.png.png )
+![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20225211.png )
 Пагінація, друга сторінка
 
 ![alt tag](https://github.com/RomanSulymka/Travel_agency_final_task/blob/master/%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA%20%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-10-10%20225401.png )
